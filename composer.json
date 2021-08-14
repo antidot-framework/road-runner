@@ -1,5 +1,5 @@
 {
-    "name": "antidot-fw/roadd-runner",
+    "name": "antidot-fw/road-runner",
     "description": "Antidot Framework integgration wit Road Runner PHP/GO concurrency server.",
     "keywords": [
         "psr-11",
@@ -15,7 +15,9 @@
         }
     ],
     "require": {
-        "php": "^7.4.3|^8.0"
+        "php": "^7.4.3|^8.0",
+        "antidot-fw/framework": "^0.2.1",
+        "ramsey/uuid": "^4.2"
     },
     "require-dev": {
         "infection/infection": "^0.24.0",
@@ -41,12 +43,14 @@
             "@cs-check",
             "@test",
             "@inspect",
+            "@psalm",
             "@infection"
         ],
         "cs-check": "phpcs src --colors",
         "cs-fix": "phpcbf src --colors",
         "inspect": "phpstan analyse src -l7 --ansi",
         "infection": "XDEBUG_MODE=coverage infection --ansi",
+        "psalm": "psalm",
         "test": "phpunit --colors=always"
     },
     "config": {
