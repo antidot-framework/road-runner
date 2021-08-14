@@ -1,0 +1,60 @@
+{
+    "name": "antidot-fw/roadd-runner",
+    "description": "Antidot Framework integgration wit Road Runner PHP/GO concurrency server.",
+    "keywords": [
+        "psr-11",
+        "psr-7",
+        "psr-15",
+        "road-runner"
+    ],
+    "type": "library",
+    "license": "BSD-2-Clause",
+    "authors": [
+        {
+            "name": "kpicaza"
+        }
+    ],
+    "require": {
+        "php": "^7.4.3|^8.0"
+    },
+    "require-dev": {
+        "infection/infection": "^0.24.0",
+        "phpro/grumphp": "~0.17 || ~1.0",
+        "phpstan/phpstan": "^0.11.5 || ^0.12.0",
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "squizlabs/php_codesniffer": "^3.4",
+        "symfony/var-dumper": "^4.2 || ^5.0",
+        "vimeo/psalm": "^4.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Antidot\\RoadRunner\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AntidotTest\\RoadRunner\\": "test"
+        }
+    },
+    "scripts": {
+        "check-all": [
+            "@cs-check",
+            "@test",
+            "@inspect",
+            "@infection"
+        ],
+        "cs-check": "phpcs src --colors",
+        "cs-fix": "phpcbf src --colors",
+        "inspect": "phpstan analyse src -l7 --ansi",
+        "infection": "XDEBUG_MODE=coverage infection --ansi",
+        "test": "phpunit --colors=always"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laminas": {
+            "config-provider": "Antidot\\RoadRunner\\Container\\Config\\ConfigProvider"
+        }
+    }
+}
